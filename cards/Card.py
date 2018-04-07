@@ -18,28 +18,14 @@ class Card:
         self._value = val
         if self._value in range(10, 14):
             self._face = True
+            self._points = 10
         else:
             self._face = False
+            self._points = val
 
     @property
     def face(self):
         return self._face
-
-    @property
-    def value(self):
-        return self._value
-
-    # This takes in new values input during the deck building
-    # and changes a note on whether or not it's a face card
-
-    @value.setter
-    def value(self, val):
-        self._value = val
-        print(val)
-        if self._value in range(10, 14):
-            self._points = 10
-        else:
-            self._points = val
 
     @property
     def points(self):
@@ -49,6 +35,3 @@ class Card:
 
     def move_up(self):
         self.value += 1
-
-    def print(self):
-        print(self.value,"of",self.suit)

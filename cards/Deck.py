@@ -3,7 +3,7 @@ from cards import card
 class FiftyTwo:
 
     def generate_deck():
-        suits = ['Spadfdes', 'Headfrts', 'Cludfbs', 'Diamdfonds']
+        suits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
         values = range(1, 14)
 
         placeholder_deck = []
