@@ -1,6 +1,27 @@
 from cards import deck
+from actions import deal
 
-deck = deck.FiftyTwo.generate_deck()
+shuffled_deck = deck.FiftyTwo.generate_deck()
 
-for card in deck:
-    print(card)
+dealer_hand = []
+player_hand = []
+
+
+dealt_card, shuffled_deck = deal_card(shuffled_deck)
+dealer_hand.append(dealt_card)
+dealt_card, shuffled_deck = deal_card(shuffled_deck)
+player_hand.append(dealt_card)
+dealt_card, shuffled_deck = deal_card(shuffled_deck)
+dealer_hand.append(dealt_card)
+dealt_card, shuffled_deck = deal_card(shuffled_deck)
+player_hand.append(dealt_card)
+
+print(dealer_hand[0])
+print(dealer_hand[1])
+print(player_hand[0])
+print(player_hand[1])
+
+
+
+
+
