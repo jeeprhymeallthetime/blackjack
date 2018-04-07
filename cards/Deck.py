@@ -1,9 +1,9 @@
 from random import *
-from . import card
+from cards import card
 class FiftyTwo:
 
     def generate_deck():
-        suits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
+        suits = ['Spadfdes', 'Headfrts', 'Cludfbs', 'Diamdfonds']
         values = range(1, 14)
 
         placeholder_deck = []
@@ -24,3 +24,5 @@ class FiftyTwo:
             deck_dealt[i].value = pick_a_card[1]
 
         return deck_dealt
+
+
