@@ -6,7 +6,7 @@ shuffled_deck = deck.FiftyTwo.generate_deck()
 dealer_hand = []
 player_hand = []
 
-
+#This is just a test for PyCharm Commits
 dealt_card, shuffled_deck = deal.deal_card(shuffled_deck)
 dealer_hand.append(dealt_card)
 dealt_card, shuffled_deck = deal.deal_card(shuffled_deck)
