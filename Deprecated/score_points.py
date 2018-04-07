@@ -3,7 +3,8 @@
 def score_hand(hand):
     for i in range(0, len(hand)):
         choice = 0
-        if hand[i].value == 1:
+        if hand[i].value == 1 and hand[i].ace_ask is False:
+            hand[i].ace_ask = True
             while choice != 1 and choice != 11:
                 choice = int(input("You have an Ace.  Do you want that worth 1 or 11?"))
                 if (choice == 1 or choice == 11):
