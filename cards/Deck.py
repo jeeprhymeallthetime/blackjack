@@ -1,6 +1,5 @@
 from random import *
 from . import card
-
 class FiftyTwo:
 
     def generate_deck():
@@ -18,9 +17,9 @@ class FiftyTwo:
             deck.append(new_card)
 
         for i in range(0, 51):
-            card = randint(0, len(placeholder_deck) - 1)
-            pick_a_card = placeholder_deck[card]
-            placeholder_deck.pop(card)
+            card_pick = randint(0, len(placeholder_deck) - 1)
+            pick_a_card = placeholder_deck[card_pick]
+            placeholder_deck.pop(card_pick)
             deck[i].suit = pick_a_card[0]
             deck[i].value = pick_a_card[1]
 
