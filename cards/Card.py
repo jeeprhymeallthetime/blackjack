@@ -14,9 +14,6 @@ class Card:
     def value(self):
         return self._value
 
-
-    # This takes in new values input during the deck building
-    # and changes a note on whether or not it's a face card
     @property
     def ace_boost(self):
         return self._ace_boost
@@ -29,6 +26,8 @@ class Card:
     def suit(self):
         return self._suit
 
+    # This takes in new values input during the deck building
+    # and changes a note on whether or not it's a face card
     @value.setter
     def value(self, val):
         self._value = val
@@ -38,11 +37,19 @@ class Card:
         else:
             self._face = False
             self._points = val
+        #If for some reason the value of the card changes and ace boost is turned on
+        #The boosted points value remains
+        if self._ace_boost == True and self._value == 1:
+            self._points = 11
 
+
+    #When the user is give the option to make an Ace worth 11 or 1,
+    ## this will update the points attribute
     @ace_boost.setter
     def ace_boost(self, val):
         self._ace_boost = val
-
+        if self._ace_boost == True and self._value == 1:
+            self._points = 11
 
     @property
     def face(self):
