@@ -1,5 +1,5 @@
 from random import *
-from . import card
+from cards import card
 
 class FiftyTwo:
 

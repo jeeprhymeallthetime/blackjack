@@ -16,7 +16,7 @@ class Card:
     @value.setter
     def value(self, val):
         self._value = val
-        if self._value in range(10, 13):
+        if self._value in range(10, 14):
             self._face = True
         else:
             self._face = False
