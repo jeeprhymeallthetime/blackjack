@@ -19,7 +19,7 @@ player_hand.append(dealt_card)
 print("Dealer holds a hidden card and a",dealer_hand[0])
 print("Your cards are:")
 print(player_hand[0]," : ",player_hand[1])
-
+#
 # for i in range(0,len(player_hand)):
 #     choice = 0
 #     if player_hand[i].value == 1:
