@@ -7,8 +7,11 @@ class Card:
         self._face = False
 
     def __str__(self):
-        return '%s of %s which has a point value of %s and its face status is %s'\
-               % (self.value, self.suit, self.points, self.face)
+        #return '%s of %s which has a point value of %s and its face status is %s'\
+        #       % (self.value, self.suit, self.points, self.face)
+        return '%s of %s'\
+              % (self.value, self.suit)
+
 
     @property
     def value(self):
@@ -50,6 +53,10 @@ class Card:
         self._ace_boost = val
         if self._ace_boost == True and self._value == 1:
             self._points = 11
+
+    @suit.setter
+    def suit(self, val):
+        self._suit = val
 
     @property
     def face(self):
