@@ -2,7 +2,7 @@ from random import *
 from . import card
 class FiftyTwo:
 
-    def generate_deck():
+    def generate_deck(self):
         suits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
         values = range(1, 14)
 
