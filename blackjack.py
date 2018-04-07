@@ -7,13 +7,13 @@ dealer_hand = []
 player_hand = []
 
 
-dealt_card, shuffled_deck = deal_card(shuffled_deck)
+dealt_card, shuffled_deck = deal.deal_card(shuffled_deck)
 dealer_hand.append(dealt_card)
-dealt_card, shuffled_deck = deal_card(shuffled_deck)
+dealt_card, shuffled_deck = deal.deal_card(shuffled_deck)
 player_hand.append(dealt_card)
-dealt_card, shuffled_deck = deal_card(shuffled_deck)
+dealt_card, shuffled_deck = deal.deal_card(shuffled_deck)
 dealer_hand.append(dealt_card)
-dealt_card, shuffled_deck = deal_card(shuffled_deck)
+dealt_card, shuffled_deck = deal.deal_card(shuffled_deck)
 player_hand.append(dealt_card)
 
 print(dealer_hand[0])
