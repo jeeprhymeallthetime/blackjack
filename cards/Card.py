@@ -3,6 +3,7 @@ class Card:
         self._suit = suit
         self._value = value
         self._ace_boost = False
+        self._ace_ask = False
         self._points = value
         self._face = False
 
@@ -29,6 +30,10 @@ class Card:
     def suit(self):
         return self._suit
 
+    @property
+    def ace_ask(self):
+        return self._ace_ask
+
     # This takes in new values input during the deck building
     # and changes a note on whether or not it's a face card
     @value.setter
@@ -53,6 +58,12 @@ class Card:
         self._ace_boost = val
         if self._ace_boost == True and self._value == 1:
             self._points = 11
+        elif self._ace_boost == False and self._value == 1:
+            self._points = 1
+
+    @ace_ask.setter
+    def ace_ask(self, val):
+        self._ace_ask = val
 
     @suit.setter
     def suit(self, val):
