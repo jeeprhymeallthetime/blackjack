@@ -79,6 +79,21 @@ def first_deal(shuffled_deck):
 
     return player_hand, dealer_hand, shuffled_deck
 
+#Check to see if the dealer has blackjack right off the bat
+def dealer_win_check(hand):
+    d_points = score_hand(hand)
+    if d_points == 21:
+        dealer_wins=True
+    else:
+        dealer_wins=False
+    return dealer_wins
+
+def dealers_turn(hand, active_deck):
+    while score_hand(hand) < 17:
+        dealt_card, active_deck = deal_card(active_deck)
+        hand.append(dealt_card)
+    return hand, active_deck
+
 def run_player_turn(turns_hand, active_deck):
     end_turn = False
     while end_turn == False:
@@ -99,5 +114,8 @@ def run_player_turn(turns_hand, active_deck):
         if score_hand(turns_hand) > 21:
             print("You bust!")
             end_turn = True
+            busted = True
+        else:
+            busted = False
 
-    return score_hand(turns_hand), active_deck
+    return score_hand(turns_hand), active_deck, busted
