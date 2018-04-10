@@ -1,3 +1,15 @@
+#This code defines the "Card" class for the blackjack code
+#Every class will have 6 attributes
+#  suit - Suit of the card that it belongs to.  Examples, Clubs, Hearts, Spades, Diamonds
+#  value - The number value of the card
+#  points - This is currently tied to the point values for blackjack and is not generalized beyond that
+#  ace_boost - Also tied to blackjack like the 'points' attribute is -
+#              flips the point for value = 1 from 1 to 11 if True
+#  ace_ask - Possibly deprecated; past versions of the blackjack code asked the user
+#            which points amount they wanted for an ace
+#  face - An indicator of if the value of the card represents a "face" value of a typical 52 card deck
+
+
 class Card:
     def __init__(self, suit="spades", value=1):
         self._suit = suit

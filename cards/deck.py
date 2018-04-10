@@ -16,7 +16,7 @@ class FiftyTwo:
             new_card = card.Card()
             deck_dealt.append(new_card)
 
-        for i in range(0, 51):
+        for i in range(0, 52):
             card_pick = randint(0, len(placeholder_deck) - 1)
             pick_a_card = placeholder_deck[card_pick]
             placeholder_deck.pop(card_pick)
