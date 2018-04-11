@@ -64,14 +64,15 @@ def score_hand(hand):
 def first_deal(shuffled_deck):
     dealer_hand = []
     player_hand = []
+    #Selecting a card from a shuffled deck of 52 cards and distribute in a clockwise fashion with dealer last
+    dealt_card, shuffled_deck = deal_card(shuffled_deck)
+    player_hand.append(dealt_card)
     dealt_card, shuffled_deck = deal_card(shuffled_deck)
     dealer_hand.append(dealt_card)
     dealt_card, shuffled_deck = deal_card(shuffled_deck)
     player_hand.append(dealt_card)
     dealt_card, shuffled_deck = deal_card(shuffled_deck)
     dealer_hand.append(dealt_card)
-    dealt_card, shuffled_deck = deal_card(shuffled_deck)
-    player_hand.append(dealt_card)
     dealer_hand[0].ace_boost = True
     dealer_hand[1].ace_boost = True
     dealer_hand[0].ace_ask = True
@@ -88,12 +89,19 @@ def dealer_win_check(hand):
         dealer_wins=False
     return dealer_wins
 
+#Dealer plays last, hits on 16 or below
 def dealers_turn(hand, active_deck):
     while score_hand(hand) < 17:
         dealt_card, active_deck = deal_card(active_deck)
+        print("Dealer receives: ",dealt_card)
         hand.append(dealt_card)
+
     return hand, active_deck
 
+#This function governs the player's turns.
+#The player is allowed to Hit or Stand
+#A Hit will give them a card, a Stand will cease their turn
+#If the player passes 21 points after any hit, they lose
 def run_player_turn(turns_hand, active_deck):
     end_turn = False
     while end_turn == False:
@@ -118,4 +126,4 @@ def run_player_turn(turns_hand, active_deck):
         else:
             busted = False
 
-    return score_hand(turns_hand), active_deck, busted
+    return score_hand(turns_hand), active_deck, busted, turns_hand
