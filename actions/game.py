@@ -10,8 +10,8 @@ def start_of_hand(player_hand, dealer_hand, shuffled_deck):
         print("Your cards are:")
         print(player_hand[0], " : ", player_hand[1])
         print("You have", act_funcs.score_hand(player_hand), "points")
-        player_points, shuffled_deck, busted, player_hand = act_funcs.run_player_turn(player_hand, shuffled_deck)
-    return player_points, shuffled_deck, busted
+        shuffled_deck, busted, player_hand = act_funcs.run_player_turn(player_hand, shuffled_deck)
+        return shuffled_deck, busted
 
 
 def end_of_hand(busted, player_hand, dealer_hand, shuffled_deck):
@@ -26,8 +26,14 @@ def end_of_hand(busted, player_hand, dealer_hand, shuffled_deck):
         else:
             print("Player loses.")
         print("Final score:")
-        print("Dealer Hand:", dealer_hand[0], "and", dealer_hand[1])
-        print("Player Hand:", player_hand[0], "and", player_hand[1])
+        hand_print = ''
+        for i in range(0,len(dealer_hand)):
+            hand_print += str(dealer_hand[i].value) + ' of ' + dealer_hand[i].suit + ', '
+        print("Dealer Hand:", hand_print[:-2], '- Final Score: ', act_funcs.score_hand(dealer_hand))
+        hand_print = ''
+        for i in range(0, len(player_hand)):
+            hand_print += str(player_hand[i].value) + ' of ' + player_hand[i].suit + ', '
+        print("Player Hand:", hand_print[:-2], '- Final Score: ', act_funcs.score_hand(player_hand))
 
 
 def play_game(shuffled_deck):
@@ -39,11 +45,10 @@ def play_game(shuffled_deck):
         print(h_line)
         dealer_hand, player_hand, shuffled_deck = act_funcs.first_deal(shuffled_deck)
         dealer_points = act_funcs.score_hand(dealer_hand)
-        print(dealer_hand[0], dealer_hand[1])
-        player_points, shuffled_deck, busted = start_of_hand(player_hand, dealer_hand, shuffled_deck)
+        shuffled_deck, busted = start_of_hand(player_hand, dealer_hand, shuffled_deck)
         end_of_hand(busted, player_hand, dealer_hand, shuffled_deck)
         choice = input("Another hand?")
-        if choice not in ('Yes', 'yes', 'y', 'Y'):
+        if choice not in ('Yes', 'yes', 'y', 'Y', 'sure', 'Sure', 'yup'):
             game_on = False
 
     return dealer_hand, player_hand, shuffled_deck

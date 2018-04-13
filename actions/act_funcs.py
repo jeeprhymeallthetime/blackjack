@@ -42,9 +42,10 @@ def score_hand(hand):
                     break
             ace_count = len(ace_in_hand)
             ace_looper = 0
-            #The If statement may be redundant - it was written for when I thought we'd go through each card
-            #Rather than just the Aces
-            #The code here, though, reduces the Ace_Boost to False, bringing the points value down to 1
+            #The If statement may be redundant -
+            #it was written for when I thought we'd go through each card
+            #rather than just the Aces.  Either way:
+            #The code here reduces the Ace_Boost to False, bringing the points value down to 1
             #Then recalculates the points in the hand
             if any(check is True for check in ace_in_hand):
                 points = 0
@@ -89,9 +90,16 @@ def dealer_win_check(hand):
         dealer_wins=False
     return dealer_wins
 
+def ace_check(hand):
+    ace_boosted = False
+    for i in range(0,len(hand)):
+        if hand[i].ace_boost == True:
+            ace_boosted = True
+    return ace_boosted
+
 #Dealer plays last, hits on 16 or below
 def dealers_turn(hand, active_deck):
-    while score_hand(hand) < 17:
+    while score_hand(hand) < 17 or (score_hand(hand) == 17 and ace_check(hand) is True):
         dealt_card, active_deck = deal_card(active_deck)
         print("Dealer receives: ",dealt_card)
         hand.append(dealt_card)
@@ -126,4 +134,4 @@ def run_player_turn(turns_hand, active_deck):
         else:
             busted = False
 
-    return score_hand(turns_hand), active_deck, busted, turns_hand
+    return active_deck, busted, turns_hand
