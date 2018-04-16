@@ -1,0 +1,6 @@
+[?4/?16/?2018 11:26 AM] Jonathan Wong: 
+id say they are independant
+a 6deck thing would be a subclass
+[?4/?16/?2018 11:27 AM] Jonathan Wong: 
+of a deck
+or a dealer is a subclass of a player

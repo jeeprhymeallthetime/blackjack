@@ -16,8 +16,13 @@ class Card:
         self._value = value
         self._ace_boost = False
         self._ace_ask = False
-        self._points = value
         self._face = False
+        if self._value in range(10, 14):
+            self._face = True
+            self._points = 10
+        else:
+            self._face = False
+            self._points = self._value
 
     def __str__(self):
         #return '%s of %s which has a point value of %s and its face status is %s'\
