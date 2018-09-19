@@ -110,7 +110,7 @@ def dealers_turn(hand, active_deck):
 #The player is allowed to Hit or Stand
 #A Hit will give them a card, a Stand will cease their turn
 #If the player passes 21 points after any hit, they lose
-def run_player_turn(turns_hand, active_deck):
+def run_player_turn(turns_hand, dealer_hand, active_deck):
     end_turn = False
     while end_turn == False:
         choice = 'n'
@@ -135,3 +135,36 @@ def run_player_turn(turns_hand, active_deck):
             busted = False
 
     return active_deck, busted, turns_hand
+
+
+
+def run_player_turn_auto(turns_hand, dealer_hand, active_deck, player):
+    end_turn = False
+    player._player_hand = turns_hand
+    player.play_strategy()
+    while end_turn == False:
+        choice = 'n'
+        while choice != 'S' and choice != 's' and choice != 'H' and choice != 'h':
+            choice = player.choice
+            if choice == 'H' or choice == 'h':
+                dealt_card, active_deck = deal_card(active_deck)
+                print("You received: ",dealt_card)
+                turns_hand.append(dealt_card)
+                print("You have", score_hand(turns_hand), "points")
+            elif choice == 'S' or choice == 's':
+                end_turn = True
+                pass
+            else:
+                print("That is an invalid entry, please try again")
+
+        if score_hand(turns_hand) > 21:
+            print("You bust!")
+            end_turn = True
+            busted = True
+        else:
+            busted = False
+
+    return active_deck, busted, turns_hand
+
+
+
