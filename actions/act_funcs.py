@@ -141,16 +141,18 @@ def run_player_turn(turns_hand, dealer_hand, active_deck):
 def run_player_turn_auto(turns_hand, dealer_hand, active_deck, player):
     end_turn = False
     player._player_hand = turns_hand
-    player.play_strategy()
+    player._dealer_hand = dealer_hand
     while end_turn == False:
         choice = 'n'
         while choice != 'S' and choice != 's' and choice != 'H' and choice != 'h':
+            player.play_strategy()
             choice = player.choice
             if choice == 'H' or choice == 'h':
                 dealt_card, active_deck = deal_card(active_deck)
                 print("You received: ",dealt_card)
                 turns_hand.append(dealt_card)
-                print("You have", score_hand(turns_hand), "points")
+                player._player_hand = turns_hand
+                print("You have", score_hand(player.player_hand), "points")
             elif choice == 'S' or choice == 's':
                 end_turn = True
                 pass
