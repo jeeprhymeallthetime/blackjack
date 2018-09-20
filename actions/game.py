@@ -47,7 +47,7 @@ def end_of_hand(busted, player_hand, dealer_hand, shuffled_deck, bet):
 def play_game(shuffled_deck, wallet, p):
     game_on = True
     h_line = ""
-    for i in range(100):
+    for i in range(50):
         h_line += '-'
     wins = 0
     total = 0
@@ -64,7 +64,7 @@ def play_game(shuffled_deck, wallet, p):
         print(total)
         #choice = input("Another hand?")
         choice = 'Y'
-        if total < 50:
+        if total < 100:
             choice = 'Y'
         else:
             choice = 'N'

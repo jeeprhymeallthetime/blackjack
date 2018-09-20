@@ -1,6 +1,12 @@
 #Actions for Blackjack
 
+from cards import deck
+
 def deal_card(given_deck):
+    if len(given_deck) < 2:
+        dd = deck.Deck(number=6)
+        dd.shuffle_deck()
+        given_deck = dd.cards
     select_card = given_deck[0]
     given_deck.pop(0)
     return select_card, given_deck
@@ -126,6 +132,9 @@ def run_player_turn(turns_hand, dealer_hand, active_deck):
                 pass
             else:
                 print("That is an invalid entry, please try again")
+                break
+
+
 
         if score_hand(turns_hand) > 21:
             print("You bust!")
@@ -133,6 +142,7 @@ def run_player_turn(turns_hand, dealer_hand, active_deck):
             busted = True
         else:
             busted = False
+
 
     return active_deck, busted, turns_hand
 
@@ -144,9 +154,11 @@ def run_player_turn_auto(turns_hand, dealer_hand, active_deck, player):
     player._dealer_hand = dealer_hand
     while end_turn == False:
         choice = 'n'
+
         while choice != 'S' and choice != 's' and choice != 'H' and choice != 'h':
             player.play_strategy()
             choice = player.choice
+            print(choice)
             if choice == 'H' or choice == 'h':
                 dealt_card, active_deck = deal_card(active_deck)
                 print("You received: ",dealt_card)
@@ -158,6 +170,13 @@ def run_player_turn_auto(turns_hand, dealer_hand, active_deck, player):
                 pass
             else:
                 print("That is an invalid entry, please try again")
+                end_turn = True
+                print(turns_hand[0].points)
+                print(turns_hand[1].points)
+                #print(turns_hand[0].points)
+                #print(turns_hand[0].points)
+                input("Press Enter to continue...")
+
 
         if score_hand(turns_hand) > 21:
             print("You bust!")
@@ -165,6 +184,7 @@ def run_player_turn_auto(turns_hand, dealer_hand, active_deck, player):
             busted = True
         else:
             busted = False
+
 
     return active_deck, busted, turns_hand
 

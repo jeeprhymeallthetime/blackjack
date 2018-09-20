@@ -96,3 +96,5 @@ class Card:
 
     def move_up(self):
         self.value += 1
+
+
