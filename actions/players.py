@@ -33,17 +33,22 @@ class Player:
         print("Player Hand:", hand_print[:-2], '- Score: ', act_funcs.score_hand(self._player_hand))
 
     def play_strategy(self):
-        #print(act_funcs.score_hand(self.player_hand))
-        if self._player_hand[0].points == 1 or self._player_hand[1].points == 1 or self._player_hand[0].points == 11 or self._player_hand[1].points == 11:
-            if act_funcs.score_hand(self._player_hand) >= 19:
-                self._choice = "S"
-                print("If Clause: 1,1")
-            elif (1 <= self._player_hand[0].points <= 7) or (1 <= self._player_hand[1].points <= 7) :
+        if self._position == "visitor":
+            if act_funcs.score_hand(self._player_hand) < 17:
                 self._choice = "H"
-                print("If Clause: 1,2")
-        elif act_funcs.score_hand(self._player_hand) < 13:
-            self._choice = "H"
-            print("If Clause: 2")
+            else:
+                self._choice = "S"
         else:
-            self._choice = "S"
-            print("If Clause: 3")
+            if self._player_hand[0].points == 1 or self._player_hand[1].points == 1 or self._player_hand[0].points == 11 or self._player_hand[1].points == 11:
+                if act_funcs.score_hand(self._player_hand) >= 19:
+                    self._choice = "S"
+                    print("If Clause: 1,1")
+                elif (1 <= self._player_hand[0].points <= 7) or (1 <= self._player_hand[1].points <= 7) :
+                    self._choice = "H"
+                    print("If Clause: 1,2")
+            elif act_funcs.score_hand(self._player_hand) < 13:
+                self._choice = "H"
+                print("If Clause: 2")
+            else:
+                self._choice = "S"
+                print("If Clause: 3")
