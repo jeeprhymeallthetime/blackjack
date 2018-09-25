@@ -118,6 +118,10 @@ def dealers_turn(hand, active_deck):
 #If the player passes 21 points after any hit, they lose
 def run_player_turn(turns_hand, dealer_hand, active_deck):
     end_turn = False
+    print("Dealer holds a hidden card and a", dealer_hand[1])
+    print("Your cards are:")
+    print(turns_hand[0], " : ", turns_hand[1])
+    print("You have", score_hand(turns_hand), "points")
     while end_turn == False:
         choice = 'n'
         while choice != 'S' and choice != 's' and choice != 'H' and choice != 'h':
@@ -137,7 +141,7 @@ def run_player_turn(turns_hand, dealer_hand, active_deck):
 
 
         if score_hand(turns_hand) > 21:
-            print("You bust!")
+            #print("You bust!")
             end_turn = True
             busted = True
         else:
@@ -187,6 +191,5 @@ def run_player_turn_auto(turns_hand, dealer_hand, active_deck, player):
 
 
     return active_deck, busted, turns_hand
-
 
 

@@ -67,7 +67,7 @@ def split_hand(player_hand, shuffled_deck):
         return hand_one, hand_two, hand_three, hand_four, shuffled_deck, 4, 4
 
 
-def split_play(hand_one, hand_two, hand_three, hand_four, shuffled_deck, scenario_num, num_hands, dealer_hand):
+def split_play(hand_one, hand_two, hand_three, hand_four, shuffled_deck, scenario_num, num_hands, dealer_hand, p):
     busted_one = False
     busted_two = False
     busted_three = False
@@ -76,35 +76,35 @@ def split_play(hand_one, hand_two, hand_three, hand_four, shuffled_deck, scenari
     if scenario_num == 1:
         print("Split Scenario #1")
         print("Playing Hand #1")
-        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn(hand_one, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn_auto(hand_one, dealer_hand, shuffled_deck, p)
         print("Playing Hand #2")
-        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn(hand_two, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn_auto(hand_two, dealer_hand, shuffled_deck, p)
     if scenario_num == 2:
         print("Split Scenario #2")
         print("Playing Hand #1")
-        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn(hand_one, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn_auto(hand_one, dealer_hand, shuffled_deck, p)
         print("Playing Hand #2")
-        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn(hand_two, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn_auto(hand_two, dealer_hand, shuffled_deck, p)
         print("Playing Hand #3")
-        shuffled_deck, busted_three, hand_three = act_funcs.run_player_turn(hand_three, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_three, hand_three = act_funcs.run_player_turn_auto(hand_three, dealer_hand, shuffled_deck, p)
     if scenario_num == 3:
         print("Split Scenario #3")
         print("Playing Hand #1")
-        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn(hand_one, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn_auto(hand_one, dealer_hand, shuffled_deck, p)
         print("Playing Hand #2")
-        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn(hand_two, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn_auto(hand_two, dealer_hand, shuffled_deck, p)
         print("Playing Hand #4")
-        shuffled_deck, busted_four, hand_four = act_funcs.run_player_turn(hand_four, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_four, hand_four = act_funcs.run_player_turn_auto(hand_four, dealer_hand, shuffled_deck, p)
     if scenario_num == 4:
         print("Split Scenario #4")
         print("Playing Hand #1")
-        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn(hand_one, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_one, hand_one = act_funcs.run_player_turn_auto(hand_one, dealer_hand, shuffled_deck, p)
         print("Playing Hand #2")
-        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn(hand_two, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_two, hand_two = act_funcs.run_player_turn_auto(hand_two, dealer_hand, shuffled_deck, p)
         print("Playing Hand #3")
-        shuffled_deck, busted_three, hand_three = act_funcs.run_player_turn(hand_three, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_three, hand_three = act_funcs.run_player_turn_auto(hand_three, dealer_hand, shuffled_deck, p)
         print("Playing Hand #4")
-        shuffled_deck, busted_four, hand_four = act_funcs.run_player_turn(hand_four, dealer_hand, shuffled_deck)
+        shuffled_deck, busted_four, hand_four = act_funcs.run_player_turn_auto(hand_four, dealer_hand, shuffled_deck, p)
     if busted_one == False or busted_two == False or busted_three == False or busted_four == False:
         busted = False
     if busted_one == True and busted_two == True and busted_three == True and busted_four == True:
@@ -137,12 +137,12 @@ def start_of_hand(player_hand, dealer_hand, shuffled_deck, bet, p):
                 hand_one, hand_two, hand_three, hand_four, shuffled_deck, scenario_num, num_hands = split_hand(
                     player_hand, shuffled_deck)
                 shuffled_deck, busted, busted_one, busted_two, busted_three, busted_four, hand_one, hand_two, hand_three, hand_four = split_play(
-                    hand_one, hand_two, hand_three, hand_four, shuffled_deck, scenario_num, num_hands, dealer_hand)
+                    hand_one, hand_two, hand_three, hand_four, shuffled_deck, scenario_num, num_hands, dealer_hand, p)
             else:
-                shuffled_deck, busted, player_hand = act_funcs.run_player_turn(player_hand, dealer_hand, shuffled_deck)
+                shuffled_deck, busted, player_hand = act_funcs.run_player_turn_auto(player_hand, dealer_hand, shuffled_deck, p)
         else:
-            shuffled_deck, busted, player_hand = act_funcs.run_player_turn(player_hand, dealer_hand, shuffled_deck)
-            # shuffled_deck, busted, player_hand = act_funcs.run_player_turn(player_hand, dealer_hand, shuffled_deck, p)
+            shuffled_deck, busted, player_hand = act_funcs.run_player_turn_auto(player_hand, dealer_hand, shuffled_deck, p)
+            # shuffled_deck, busted, player_hand = act_funcs.run_player_turn_auto(player_hand, dealer_hand, shuffled_deck, p)
     return shuffled_deck, busted, split, scenario_num, busted_one, busted_two, busted_three, busted_four, hand_one, hand_two, hand_three, hand_four
 
 
@@ -239,7 +239,7 @@ def end_of_hand_split(busted, player_hand, dealer_hand, shuffled_deck, bet, scen
     return result, wallet
 
 
-def play_game(shuffled_deck, wallet, p):
+def play_game(shuffled_deck, wallet, p, wallet_track):
     game_on = True
     h_line = ""
     for i in range(50):
@@ -264,6 +264,7 @@ def play_game(shuffled_deck, wallet, p):
                                        wallet)
         wins = wins + result
         total = total + 1
+        wallet_track.append(wallet)
         print(total)
         print("You have $", wallet, "in your wallet")
         #choice = input("Another hand?")
@@ -275,4 +276,4 @@ def play_game(shuffled_deck, wallet, p):
         if choice not in ('Yes', 'yes', 'y', 'Y', 'sure', 'Sure', 'yup'):
             game_on = False
 
-    return shuffled_deck, wallet, wins, total
+    return shuffled_deck, wallet, wins, total, wallet_track
